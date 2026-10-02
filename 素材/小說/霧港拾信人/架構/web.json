@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "id": "mist-port-letterkeeper",
+  "title": "霧港拾信人",
+  "description": "霧港每年有三十七天被濃霧封住。新任郵差簡澄收到一封寄給明日的信，循著鐘聲與退件走向被海水吞沒的沉鐘埠。每一封信都在問：收下真相，是否就等於原諒寫信的人？",
+  "viewport": {
+    "designWidth": 1600,
+    "designHeight": 900,
+    "ratio": "16:9",
+    "mode": "contain",
+    "orientation": "landscape",
+    "mobileBehavior": "auto-rotate"
+  },
+  "story": {
+    "description": "簡澄與阿沅循著潮汐郵路，尋找那些被退回、卻從未真正寄失的信。完成章節後，將逐步解鎖相關的人物與世界觀資料。",
+    "arcs": [
+      {
+        "id": "letters-before-high-tide",
+        "title": "大潮以前",
+        "description": "一封寄給明日的信，將簡澄與阿沅帶往沉鐘埠。當空鐘面出現指針，下一封信又把她們引向更深的潮聲。",
+        "index": "../劇情/大潮以前/index.json"
+      }
+    ]
+  },
+  "libraries": {
+    "characters": {
+      "title": "人物設定",
+      "index": "../人物/index.json"
+    },
+    "world": {
+      "title": "世界觀設定",
+      "index": "../世界觀/index.json"
+    },
+    "maps": {
+      "title": "地圖設定",
+      "index": "../地圖/index.json"
+    }
+  }
+}

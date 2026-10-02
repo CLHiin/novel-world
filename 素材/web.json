@@ -1,0 +1,30 @@
+{
+  "general": {
+    "Background_home": "素材/通用/圖片/首頁背景.png",
+    "Background_default": "素材/通用/圖片/首頁背景.png",
+    "Cover_teaser": "素材/通用/圖片/預告封面.png",
+    "Cover_default": "素材/通用/圖片/預設封面.png"
+  },
+  "novels": {
+    "tianfu": {
+      "title": "天賦權能",
+      "cover": "素材/小說/天賦權能/圖片/封面.png",
+      "Background": "素材/小說/天賦權能/圖片/背景.png",
+      "configPath": "素材/小說/天賦權能/架構/web.json"
+    },
+    "mist-port": {
+      "title": "霧港拾信人",
+      "cover": "",
+      "Background": "",
+      "configPath": "素材/小說/霧港拾信人/架構/web.json"
+    },
+    "other": {
+      "title": "靜待後續",
+      "cover": "",
+      "Background": "",
+      "configPath": ""
+    },
+    "X": {},
+    "Y": {}
+  }
+}

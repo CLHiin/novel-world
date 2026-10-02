@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" role="img" aria-labelledby="title desc">
+  <title id="title">霧港郵差肖像示意圖</title>
+  <desc id="desc">一名披著深藍外套、手持信封的年輕郵差，站在霧色港口前。</desc>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#243747"/>
+      <stop offset="1" stop-color="#78909a"/>
+    </linearGradient>
+    <linearGradient id="coat" x2="1" y2="1">
+      <stop stop-color="#27394a"/>
+      <stop offset="1" stop-color="#111a25"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" fill="url(#sky)"/>
+  <path d="M0 300 95 250l72 36 92-74 73 56 148-62v274H0Z" fill="#344e5a" opacity=".78"/>
+  <path d="M0 351q110-35 240 0t240 0v129H0Z" fill="#18323c"/>
+  <path d="M38 363h405" stroke="#b6a56c" stroke-width="4" stroke-dasharray="12 13" opacity=".7"/>
+  <circle cx="242" cy="169" r="78" fill="#d8ad8c"/>
+  <path d="M163 169q4-96 88-94 71 2 76 83-40-30-73-69-29 47-91 58Z" fill="#28303a"/>
+  <path d="M165 245q76-48 151 0l64 235H98Z" fill="url(#coat)"/>
+  <path d="m199 239 43 42 43-42-19 110h-48Z" fill="#ded6c2"/>
+  <path d="M305 326q48-20 83 11l-21 83q-42 1-77-24Z" fill="#bf8f6a"/>
+  <rect x="315" y="335" width="72" height="92" rx="4" transform="rotate(12 315 335)" fill="#e7d7ae"/>
+  <path d="m327 365 43 9m-45 8 35 7" stroke="#806d4c" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="214" cy="174" r="5" fill="#26313a"/>
+  <circle cx="272" cy="174" r="5" fill="#26313a"/>
+  <path d="M222 208q20 12 39 0" fill="none" stroke="#875c50" stroke-width="4" stroke-linecap="round"/>
+</svg>

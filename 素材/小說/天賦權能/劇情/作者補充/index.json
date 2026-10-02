@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "id": "author-notes",
+  "title": "作者補充",
+  "description": "含劇透與未完稿，屬於獨立的作者補充；建議閱讀完正文後再開啟。",
+  "chapters": [
+    {
+      "id": "author-notes-001",
+      "number": "005.5",
+      "title": "作者補充：第1.5章：劇透貓貓1（含劇透）",
+      "file": "001.md"
+    },
+    {
+      "id": "author-notes-002",
+      "number": "010.5",
+      "title": "作者補充：劇透貓貓2（未完稿，含劇透）",
+      "file": "002.md"
+    }
+  ]
+}

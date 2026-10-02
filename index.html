@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>視覺小說網站</title>
+    <link rel="stylesheet" href="css/style.css?v=20261002-27">
+</head>
+<body>
+
+<div id="game-container">
+    <div id="game-canvas">
+
+        <!-- ==================== 全域 UI ==================== -->
+
+        <!-- 左上角導航 -->
+        <nav id="bookmark-bar" class="corner-ui" aria-label="導覽路徑">
+            <button onclick="goToLayer('home')">🏠 首頁</button>
+            <div id="breadcrumb-items"></div>
+        </nav>
+
+        <!-- 右上角選單 -->
+        <div id="menu-toggle-bar" class="corner-ui">
+            <button onclick="toggleSideMenu()">☰</button>
+        </div>
+
+        <!-- 右側選單 -->
+        <div id="side-menu">
+            <div id="side-menu-header">
+                <span>選單</span>
+                <button onclick="toggleSideMenu()">✕</button>
+            </div>
+
+            <div id="side-menu-content">
+                <button onclick="openBookmarks()">📖 閱讀書籤</button>
+                <button onclick="openSettings()">⚙️ 設定</button>
+            </div>
+        </div>
+
+        <!-- ==================== 首頁 ==================== -->
+
+        <div id="screen-home" class="screen">
+            <img id="home-bg" class="background-image" alt="首頁背景">
+
+            <div class="screen-content">
+                <h1>小說世界總覽</h1>
+                <div id="novel-wall" class="card-container grid-3"></div>
+            </div>
+
+        </div>
+
+
+        <!-- ==================== 小說首頁 ==================== -->
+
+        <div id="screen-novel-home" class="screen" style="display: none;">
+            <img id="novel-bg" class="background-image" alt="小說背景">
+
+            <div class="screen-content">
+                <h1 id="current-novel-title">小說標題</h1>
+                <p id="current-novel-description" class="novel-description"></p>
+
+                <div class="novel-menu">
+                    <div class="novel-menu-major">
+                        <button onclick="openChapterList()">📖 小說篇章</button>
+                        <button id="resume-reading" onclick="resumeReading()" disabled>▶ 繼續閱讀</button>
+                    </div>
+                    <div class="novel-menu-minor">
+                        <button onclick="openCharacterList()">👤 人物設定</button>
+                        <button onclick="openWorldList()">✨ 世界觀設定</button>
+                        <button onclick="openMapList()">🗺️ 地圖設定</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== 資料列表 ==================== -->
+
+        <div id="screen-library" class="screen" style="display: none;">
+            <img id="library-bg" class="background-image" alt="">
+            <div class="screen-content library-content">
+                <h1 id="library-title">資料列表</h1>
+                <p id="library-description" class="library-description"></p>
+                <label class="search-label" for="library-search">搜尋名稱或標籤</label>
+                <input id="library-search" class="library-search" type="search" placeholder="輸入關鍵字">
+                <div id="library-list" class="library-list"></div>
+                <div id="library-detail" class="library-detail" hidden></div>
+            </div>
+
+        </div>
+
+        <div id="screen-settings" class="screen" style="display: none;">
+            <div class="screen-content library-content settings-content">
+                <header class="settings-header">
+                    <div>
+                        <h1>介面與資料設定</h1>
+                        <p>小說首頁與列表頁各有獨立的大／中／小字級和每列選項數設定。修改後會自動保存在這台裝置。</p>
+                    </div>
+                </header>
+
+                <section class="settings-group" aria-labelledby="home-settings-title">
+                    <div class="settings-group-header">
+                        <h2 id="home-settings-title">首頁設定</h2>
+                        <button type="button" class="settings-reset" data-settings-reset="home">恢復此區預設</button>
+                    </div>
+                    <div class="settings-fields" data-settings-fields="home">
+                        <label class="settings-checkbox"><input data-setting="home.showNavigation" type="checkbox"> 顯示左上路徑導覽</label>
+                    </div>
+                    <div class="settings-preview">
+                        <strong>預覽｜首頁</strong>
+                        <div class="settings-preview-home">
+                            <strong>小說世界總覽</strong>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                            <article class="settings-preview-card">
+                                <img src="素材/通用/圖片/預設封面.png" alt="">
+                                <b>示範小說標題</b>
+                                <span>以預設封面搭配小說標題與簡介，預覽書架卡片的文字大小與每列排列。</span>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-group" aria-labelledby="novel-settings-title">
+                    <div class="settings-group-header">
+                        <h2 id="novel-settings-title">小說世界設定</h2>
+                        <button type="button" class="settings-reset" data-settings-reset="novel">恢復此區預設</button>
+                    </div>
+                    <div class="settings-fields" data-settings-fields="novel">
+                    </div>
+                    <div class="settings-preview">
+                        <strong>預覽｜第一層：小說首頁（標題、副標題與選項）</strong>
+                        <div class="settings-preview-novel">
+                            <b>小說標題</b><span>世界介紹、副標題</span>
+                            <div class="settings-preview-major"><button>小說篇章</button><button>繼續閱讀</button></div>
+                            <div class="settings-preview-minor"><button>人物設定</button><button>世界觀設定</button><button>地圖設定</button></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-group" aria-labelledby="library-settings-title">
+                    <div class="settings-group-header">
+                        <h2 id="library-settings-title">小說內列表設定</h2>
+                        <button type="button" class="settings-reset" data-settings-reset="library">恢復此區預設</button>
+                    </div>
+                    <div class="settings-fields" data-settings-fields="library"></div>
+                    <div class="settings-preview">
+                        <strong>預覽｜第二層：主副標題、搜尋、章節／人物／世界觀／地圖選項</strong>
+                        <div class="settings-preview-library">
+                            <b>聖地篇／人物設定</b>
+                            <span>此處顯示篇章或圖鑑分類的說明文字。</span>
+                            <input class="settings-preview-library-search" type="search" aria-label="列表搜尋欄預覽" placeholder="搜尋名稱或標籤">
+                            <div class="settings-preview-library-list">
+                                <button><strong>第一個選項</strong><small>標題下方可顯示簡短說明。</small></button>
+                                <button><strong>第二個選項</strong><small>人物、世界觀與地點共用此列表設定。</small></button>
+                                <button><strong>第三個選項</strong><small>調整每列數量以符合不同尺寸。</small></button>
+                                <button><strong>第四個選項</strong><small>文字與欄數依大、中、小介面分別套用。</small></button>
+                                <button><strong>第五個選項</strong><small>搜尋欄和選項排版一併預覽。</small></button>
+                                <button><strong>第六個選項</strong><small>使用右下介面大小控制測試實際效果。</small></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings-group" aria-labelledby="reader-settings-title">
+                    <div class="settings-group-header">
+                        <h2 id="reader-settings-title">小說篇章設定</h2>
+                        <button type="button" class="settings-reset" data-settings-reset="reader">恢復此區預設</button>
+                    </div>
+                    <div class="settings-fields" data-settings-fields="reader">
+                    </div>
+                    <div class="settings-preview settings-preview-reader">
+                        <strong>預覽｜小說篇章</strong>
+                        <b>篇章名稱　／　章節標題</b>
+                        <p>這是小說正文預覽文字；實際正文會套用所選尺寸對應的字級設定。</p>
+                        <small>閱讀進度 42%</small>
+                        <div><button>上一章</button><button>下一章</button><button>返回篇章列表</button></div>
+                    </div>
+                </section>
+
+                <section class="settings-group" aria-labelledby="data-settings-title">
+                    <h2 id="data-settings-title">設定與閱讀紀錄備份</h2>
+                    <p>匯出包含介面設定、閱讀進度、完成章節與跨小說書籤。匯入會取代本機這些類型的紀錄。</p>
+                    <div class="settings-actions">
+                        <button id="settings-export" type="button" class="settings-action">匯出設定與紀錄</button>
+                        <button id="settings-import-trigger" type="button" class="settings-action">匯入備份</button>
+                        <input id="settings-import-file" type="file" accept="application/json,.json" hidden>
+                    </div>
+                    <p id="settings-status" role="status" aria-live="polite"></p>
+                </section>
+            </div>
+        </div>
+
+        <!-- ==================== 閱讀器 ==================== -->
+
+        <div id="screen-reader" class="screen" style="display: none;">
+            <div id="scene-area">
+                <img id="bg-image" alt="場景圖片" hidden>
+            </div>
+
+            <div id="dialogue-box">
+                <div id="reader-heading">閱讀器</div>
+                <div id="dialogue-text" class="reader-prose">閱讀區載入中...</div>
+                <p id="reader-completion" hidden></p>
+                <div id="reader-controls">
+                    <button id="reader-prev" onclick="previousChapter()">上一章</button>
+                    <span id="reader-progress"></span>
+                    <button id="reader-next" onclick="completeOrNextChapter()">完成本章</button>
+                    <button id="reader-bookmark" type="button" aria-pressed="false">☆ 加入書籤</button>
+                    <button onclick="openChapterList()">返回篇章列表</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="display-size-controls" role="group" aria-label="介面大小">
+            <span id="display-size-label">介面大小</span>
+            <div id="display-size-options">
+                <button type="button" data-reader-size="small" aria-pressed="false">小</button>
+                <button type="button" data-reader-size="medium" aria-pressed="true">中</button>
+                <button type="button" data-reader-size="large" aria-pressed="false">大</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<dialog id="image-preview" class="image-preview" aria-label="圖片預覽">
+    <button type="button" class="image-preview-close" aria-label="關閉圖片預覽">✕</button>
+    <img id="image-preview-content" alt="">
+    <p id="image-preview-caption"></p>
+</dialog>
+
+<script type="module" src="js/main.js?v=20261002-27"></script>
+</body>
+</html>

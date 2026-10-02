@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "id": "holy-land",
+  "title": "聖地篇",
+  "description": "聖地篇的章節索引。",
+  "chapters": [
+    {
+      "id": "holy-land-001",
+      "number": "001",
+      "title": "天賦",
+      "file": "001.md"
+    },
+    {
+      "id": "holy-land-002",
+      "number": "002",
+      "title": "亞特家",
+      "file": "002.md"
+    },
+    {
+      "id": "holy-land-003",
+      "number": "003",
+      "title": "繼承者",
+      "file": "003.md"
+    },
+    {
+      "id": "holy-land-004",
+      "number": "004",
+      "title": "艾迪",
+      "file": "004.md"
+    },
+    {
+      "id": "holy-land-005",
+      "number": "005",
+      "title": "莉亞",
+      "file": "005.md"
+    },
+    {
+      "id": "holy-land-006",
+      "number": "006",
+      "title": "聖地",
+      "file": "006.md"
+    },
+    {
+      "id": "holy-land-007",
+      "number": "007",
+      "title": "第一日測驗(1)",
+      "file": "007.md"
+    },
+    {
+      "id": "holy-land-008",
+      "number": "008",
+      "title": "第一日測驗(2)",
+      "file": "008.md"
+    },
+    {
+      "id": "holy-land-009",
+      "number": "009",
+      "title": "S班成員",
+      "file": "009.md"
+    },
+    {
+      "id": "holy-land-010",
+      "number": "010",
+      "title": "觸發",
+      "file": "010.md"
+    },
+    {
+      "id": "holy-land-011",
+      "number": "011",
+      "title": "第十一章（未命名）",
+      "file": "011.md"
+    }
+  ]
+}

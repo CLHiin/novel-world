@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">霧港街區示意圖</title>
+  <desc id="desc">標示上坡街、鐘樓街、郵局、白井、下埠與沉鐘埠方向的虛構港鎮地圖。</desc>
+  <defs>
+    <linearGradient id="sea" x2="0" y2="1">
+      <stop stop-color="#315461"/>
+      <stop offset="1" stop-color="#172f3a"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0v32" fill="none" stroke="#fff" stroke-opacity=".06"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" fill="#d4c9a6"/>
+  <path d="M0 0h960v218q-142 54-270 16t-227 10Q290 273 0 208Z" fill="url(#sea)"/>
+  <path d="M0 0h960v218q-142 54-270 16t-227 10Q290 273 0 208Z" fill="url(#grid)"/>
+  <path d="M0 206q190 63 387 28t303-2q139 33 270-14v66q-136 54-290 20t-303 9Q183 342 0 274Z" fill="#a8b8a7"/>
+  <path d="M0 273q183 69 367 13t303-9q154 34 290-20v283H0Z" fill="#8c9677"/>
+  <path d="M140 410 290 330l122 35 114-89 104 43 125-70" fill="none" stroke="#eee2bd" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M140 410 290 330l122 35 114-89 104 43 125-70" fill="none" stroke="#665f4b" stroke-width="3" stroke-dasharray="9 10"/>
+  <g fill="#f0e4c0" stroke="#61594a" stroke-width="3">
+    <path d="m243 326 34-22 37 19-5 37-40 16-31-19Z"/>
+    <path d="m376 351 37-23 40 20-8 39-42 14-32-23Z"/>
+    <path d="m482 264 39-25 40 18-4 41-42 14-37-22Z"/>
+    <path d="m614 302 36-22 41 19-4 39-43 13-34-21Z"/>
+    <path d="m721 246 38-24 41 18-4 41-44 14-34-23Z"/>
+  </g>
+  <g font-family="sans-serif" font-size="23" font-weight="700" fill="#fff">
+    <text x="65" y="72">霧港海灣</text>
+  </g>
+  <g font-family="sans-serif" font-size="20" font-weight="700" fill="#29291f">
+    <text x="225" y="434">下埠</text>
+    <text x="365" y="421">郵局</text>
+    <text x="467" y="231">鐘樓街</text>
+    <text x="633" y="366">白井</text>
+    <text x="741" y="211">上坡街</text>
+    <text x="60" y="504" font-size="16" font-weight="400">示意圖｜潮線會隨每日潮汐改變</text>
+  </g>
+  <circle cx="397" cy="370" r="10" fill="#9d4335" stroke="#fff" stroke-width="4"/>
+  <circle cx="654" cy="321" r="9" fill="#446c87" stroke="#fff" stroke-width="4"/>
+  <path d="M857 93v70m0-70-15 24m15-24 15 24" stroke="#f4e6c3" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="846" y="187" fill="#f4e6c3" font-family="sans-serif" font-size="18" font-weight="700">北</text>
+</svg>
