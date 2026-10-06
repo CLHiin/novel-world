@@ -2,7 +2,7 @@
   "version": 1,
   "id": "tianfu-quanneng",
   "title": "天賦權能",
-  "description": "以天賦與魔法為核心的奇幻世界。副城貴族的亞特家三名孩子即將赴聖地進修，迎來命運、家族與力量的挑戰。",
+  "description": "以天賦與魔法為核心的奇幻世界。",
   "viewport": {
     "designWidth": 1600,
     "designHeight": 900,
@@ -16,8 +16,8 @@
     "arcs": [
       {
         "id": "holy-land",
-        "title": "聖地篇",
-        "description": "亞特家三名孩子踏入聖地後的正文故事，收錄第 1 至第 11 章。",
+        "title": "異界傳說——聖地篇",
+        "description": "異界傳說的聖地篇。當前收錄第 1 至第 11 章。",
         "index": "../劇情/聖地篇/index.json"
       },
       {

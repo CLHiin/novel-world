@@ -3,219 +3,222 @@
   "title": "人物設定",
   "description": "人物肖像可留空，留空時會使用「？」預設頭像。",
   "items": [
-    {
-      "id": "character-001",
-      "name": "亞特．哈希",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "副城貴族，是三人的父親。",
-      "content": "副城貴族，是三人的父親。是王城西方，奇洛斯派系的成員。"
+    { "id": "character-001", "name": "艾迪．亞特",
+      "tags": ["亞特家", "主角", "2000期生"],
+      "portrait": "../人物/艾迪_亞特.png",
+      "summary": "亞特家族的長子。",
+      "content": "出生於亞特家族的長子，因為天生魔力低下，在貴族圈中被蔑視著。但在如今卻有著遠超常人的實力。",
+      "sections": []
     },
-    {
-      "id": "character-002",
-      "name": "潘特．英列",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
+    { "id": "character-002", "name": "迪亞．亞特",
+      "tags": ["亞特家", "主角", "2000期生"],
+      "summary": "亞特家族的次子，樂觀、單純、善良。",
+      "content": "覺醒的天賦為冰魔法。對著大哥艾迪抱著崇拜、尊敬的感情。"
+    },
+    { "id": "character-003", "name": "亞娜．亞特",
+      "tags": ["亞特家", "主角", "2000期生"],
+      "summary": "亞特家族的三女，天才少女。",
+      "content": "天賦為沉默與一個未公開的天賦。極高的智慧使其在幼年參與家族的各種決策，如今已掌握了許多的產業。",
+      "sections": [
+        { "id": "character-003-A", "title": "個性",
+          "content": "是天才少女，對待外人有禮得體，但對於熟識的人，會顯現出有些腹黑的一面。",
+          "initialStatus": "locked",
+          "unlockHint": "完成第五章解鎖。",
+          "unlockAfter": ["holy-land-005"]
+        }
+      ]
+    },
+    { "id": "character-004", "name": "亞特．哈希",
+      "tags": ["亞特家", "1982期生"],
+      "summary": "副城貴族。",
+      "content": "位於王城西方，奇洛斯派系的一員。是艾迪、迪亞、亞娜的父親。有著出色的能力，於11歲時便進入了聖地。",
+      "links": [
+        {"type": "characters", "id": "character-001", "label": "艾迪"},
+        {"type": "characters", "id": "character-002", "label": "迪亞"},
+        {"type": "characters", "id": "character-003", "label": "亞娜"}
+      ]
+    },
+    { "id": "character-005", "name": "潘特．英列",
+      "tags": ["亞特家", "1982期生"],
       "summary": "亞特的夫人。",
-      "content": "亞特的夫人。"
-    },
-    {
-      "id": "character-003",
-      "name": "艾迪．亞特",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "迪亞的哥哥，白色短髮，淡藍色眼睛。",
-      "content": "迪亞的哥哥，白色短髮，淡藍色眼睛。"
-    },
-    {
-      "id": "character-004",
-      "name": "迪亞．亞特",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "第一章主角，藍色短髮，藍色眼睛。",
-      "content": "第一章主角，藍色短髮，藍色眼睛。天賦為冰魔法。樂觀善良的男孩。"
-    },
-    {
-      "id": "character-005",
-      "name": "亞娜．亞特",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "迪亞的妹妹，藍色長髮，藍色眼睛。",
-      "content": "迪亞的妹妹，藍色長髮，藍色眼睛。天賦為沉默、預言。天才少女，只對艾迪稱呼哥哥，對迪亞則是稱呼笨小孩。",
-      "initialStatus": "locked",
-      "unlockAfter": [
-        "holy-land-011"
-      ],
-      "unlockHint": "完成聖地篇第十一章後解鎖，避免提前看到劇透資訊。"
-    },
-    {
-      "id": "character-006",
-      "name": "瑟夫",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
+      "content": "於聖地時便與亞特為好友。",
+      "links": [
+        {"type": "characters", "id": "character-004", "label": "亞特"}
+      ]
+    },   
+    { "id": "character-006", "name": "瑟夫",
+      "tags": ["亞特家"],
       "summary": "亞特家的大管家，白髮的優雅老人。",
-      "content": "亞特家的大管家，白髮的優雅老人。稱呼以少爺、小姐、夫人、主人。"
+      "content": "重視禮儀與規則的人，也是家主亞特最信任的人。",
+      "initialStatus": "locked",
+      "unlockHint": "完成第二章解鎖。",
+      "unlockAfter": ["holy-land-002"],
+      "links":[
+        {"type": "characters", "id": "character-004", "label": "亞特"}
+      ]
     },
-    {
-      "id": "character-007",
-      "name": "希拉",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
+    { "id": "character-007", "name": "希拉",
+      "tags": ["亞特家"],
       "summary": "亞特家的二管家，身材有些胖的中年女性。",
-      "content": "亞特家的二管家，身材有些胖的中年女性。稱呼為小迪亞、小亞娜。"
+      "content": "從小照顧迪亞，因此與迪亞的關係很好。",
+      "initialStatus": "locked",
+      "unlockHint": "完成第三章解鎖。",
+      "unlockAfter": ["holy-land-003"],
+      "links": [
+        {"type": "characters", "id": "character-002", "label": "迪亞"}
+      ]
     },
-    {
-      "id": "character-008",
-      "name": "洛琳",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "亞特家的三管家，年輕的女孩，對艾迪抱著奇怪的愛意，算是變態。",
-      "content": "亞特家的三管家，年輕的女孩，對艾迪抱著奇怪的愛意，算是變態。但是個工作能力頂尖的菁英。"
+    { "id": "character-008", "name": "洛琳",
+      "tags": ["亞特家"],
+      "summary": "亞特家的三管家，年輕的精英少女。",
+      "content": "因為某些原因，對艾迪抱著愛意，有時會展現得有些變態。但在工作方面是頂尖的菁英。",
+      "initialStatus": "locked",
+      "unlockHint": "完成第三章解鎖。",
+      "unlockAfter": ["holy-land-003"],
+      "links": [
+        {"type": "characters", "id": "character-001", "label": "艾迪"}
+      ]
     },
-    {
-      "id": "character-009",
-      "name": "莉亞．伊特",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "亞特的副城貴族朋友伊特家的女兒，天賦為星之魔法。",
-      "content": "亞特的副城貴族朋友伊特家的女兒，天賦為星之魔法。擁有白色的長髮與寶石般的紅色眼睛，強勢的少女。"
+    { "id": "character-009", "name": "鯊克",
+      "tags": ["亞特家", "2001期生"],
+      "summary": "作為隨從跟隨幾人進入聖地。",
+      "content": "似乎從小就在進行相當嚴酷的訓練。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-006"],
+      "links": [
+        {"type": "characters", "id": "character-002", "label": "迪亞"}
+      ]
     },
-    {
-      "id": "character-010",
-      "name": "亞瑟．伊特",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
-      "summary": "莉亞的弟弟，天賦為眾星魂之力。",
-      "content": "莉亞的弟弟，天賦為眾星魂之力。擁有白色的短髮與血紅色眼睛。"
+    { "id": "character-010", "name": "莉亞．伊特",
+      "tags": ["伊特家", "主角", "2000期生"],
+      "summary": "伊特家的大女兒，天賦為星之魔法。",
+      "content": "強勢的少女，目標成為最強。幼年時與艾迪有著婚約關係，但二人並沒有太多交集。",
+      "links": [
+        {"type": "characters", "id": "character-001", "label": "艾迪"}
+      ]
     },
-    {
-      "id": "character-011",
-      "name": "鯉琪．洛斯",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
+    { "id": "character-011", "name": "亞瑟．伊特",
+      "tags": ["伊特家"],
+      "summary": "莉亞的弟弟。",
+      "content": "天賦為眾星魂之力。",
+      "initialStatus": "locked",
+      "unlockHint": "尚無更多資訊。",
+      "links": [
+        {"type": "characters", "id": "character-010", "label": "莉亞"}
+      ]
+    },
+    { "id": "character-012", "name": "伊特．洛夫",
+      "tags": ["伊特家", "1982期生"],
+      "summary": "副城貴族。莉亞與亞瑟的父親。",
+      "content": "與亞特從聖地時期成為好友，並訂下了莉亞與艾迪的婚約。",
+      "links": [
+        {"type": "characters", "id": "character-004", "label": "亞特"},
+        {"type": "characters", "id": "character-010", "label": "莉亞"},
+        {"type": "characters", "id": "character-011", "label": "亞瑟"}
+      ]
+    },
+    { "id": "character-013", "name": "鯉琪．洛斯",
+      "tags": ["2000期生"],
       "summary": "聖地2000期生。",
-      "content": "聖地2000期生。擁有天賦『等加速』的女性。是迪亞入聖地時的引導員。"
+      "content": "為了賺取額外收入而擔任引導員時，正好擔任了主角們的引導員。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-006"],
+      "sections": [
+        { "id": "character-013-a", "title": "天賦",
+          "content": "擁有『等加速』的天賦。",
+          "initialStatus": "locked",
+          "unlockAfter": [],
+          "unlockHint": "尚無新增該篇章資訊。"
+        }
+      ]
     },
-    {
-      "id": "character-012",
-      "name": "剆詩．龐克",
-      "tags": [
-        "亞特家",
-        "家族"
-      ],
+    { "id": "character-014", "name": "剆詩．龐克",
+      "tags": ["2001期生"],
       "summary": "聖地2001期生。",
-      "content": "聖地2001期生。一開始表現有些狂妄的副城貴族。有著斷魂掌的強力招式。"
+      "content": "一開始引起不少人注目的副城貴族。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-006"],
+      "sections": [
+        { "id": "character-014-A", "title": "實力",
+          "content": "斷魂掌",
+          "initialStatus": "locked",
+          "unlockAfter": []
+        }
+      ]
     },
-    {
-      "id": "character-013",
-      "name": "伊索．沃德",
-      "tags": [
-        "S班",
-        "2000期"
-      ],
+    { "id": "character-015", "name": "伊索．沃德",
+      "tags": ["2000期生", "S班", "王族"],
       "summary": "王族之子，擁有金黃色的神聖魔力。",
-      "content": "王族之子，擁有金黃色的神聖魔力，但……有著某種秘密。",
+      "content": "實力全方面輾壓普通人的存在，高傲、狂妄、強大。",
       "initialStatus": "locked",
-      "unlockAfter": [
-        "holy-land-011"
-      ],
-      "unlockHint": "完成聖地篇第十一章後解鎖，避免提前看到劇透資訊。"
+      "unlockAfter": ["holy-land-007"]
     },
-    {
-      "id": "character-014",
-      "name": "哈特．馮恩",
-      "tags": [
-        "S班",
-        "2000期"
-      ],
-      "summary": "紅髮少年，有著強大的魔力數值。",
-      "content": "紅髮少年，有著強大的魔力數值。"
-    },
-    {
-      "id": "character-015",
-      "name": "普羅斯",
-      "tags": [
-        "S班",
-        "2000期"
-      ],
-      "summary": "黑髮眼鏡男。",
-      "content": "黑髮眼鏡男。（正文多作「普羅斯」，此處依正文統一。）"
-    },
-    {
-      "id": "character-016",
-      "name": "凜．席特",
-      "tags": [
-        "S班",
-        "1999期"
-      ],
-      "summary": "術具師，能創建暫時性的魔道具，並以此戰鬥、輔助。",
-      "content": "術具師，能創建暫時性的魔道具，並以此戰鬥、輔助。"
-    },
-    {
-      "id": "character-017",
-      "name": "米娜．歇爾",
-      "tags": [
-        "S班",
-        "1999期"
-      ],
-      "summary": "治癒與輔助系。",
-      "content": "治癒與輔助系。"
-    },
-    {
-      "id": "character-018",
-      "name": "迪卡．諾魯恩",
-      "tags": [
-        "S班",
-        "1998期"
-      ],
-      "summary": "天賦【腐朽之城】，可以將周圍一切逐步腐朽。",
-      "content": "天賦【腐朽之城】，可以將周圍一切逐步腐朽。"
-    },
-    {
-      "id": "character-019",
-      "name": "西斯特．洛斯",
-      "tags": [
-        "S班",
-        "1998期"
-      ],
-      "summary": "空間系天賦，與迪卡能達成相當強的天賦組合技。",
-      "content": "空間系天賦，與迪卡能達成相當強的天賦組合技。"
-    },
-    {
-      "id": "character-020",
-      "name": "羅格",
-      "tags": [
-        "其他"
-      ],
+    { "id": "character-016", "name": "羅格",
+      "tags": ["聖地", "???"],
       "summary": "觸發創作者。",
-      "content": "觸發創作者。五百年前被紮克研發的召喚魔術呼叫的異世界人。",
+      "content": "製作【觸發】魔道具、虛擬世界的主導研究員。另外在資訊加密、區塊連結網的優化理論，也影響了深遠。最後於創作魔道具時死亡。",
       "initialStatus": "locked",
-      "unlockAfter": [
-        "holy-land-011"
+      "unlockAfter": ["holy-land-008"],
+      "sections": [
+        { "id": "character-016-a", "title": "身世",
+          "content": "約五百年前被紮克研發的召喚魔術呼叫的異世界人。",
+          "initialStatus": "locked",
+          "unlockAfter": [],
+          "unlockHint": "尚無新增該篇章資訊。"
+        }
       ],
-      "unlockHint": "完成聖地篇第十一章後解鎖，避免提前看到劇透資訊。"
+      "links": [
+        {"type": "maps", "id": "map-003", "label": "霍里凱斯特（聖地）"}
+      ]
+    },
+    { "id": "character-017", "name": "哈特．馮恩",
+      "tags": ["2000期生", "S班"],
+      "summary": "有著強大的魔力量。",
+      "content": "開朗、隨意的少年。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-009"]
+    },
+    { "id": "character-018", "name": "普羅斯",
+      "tags": ["2000期生", "S班"],
+      "summary": "黑髮。",
+      "content": "具有優秀的分析能力。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-009"]
+    },
+    { "id": "character-019", "name": "凜．席特",
+      "tags": ["1999期生", "S班"],
+      "summary": "能夠製作魔道具。",
+      "content": "術具師，能創建暫時性的魔道具，並以此戰鬥、輔助。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-009"]
+    },
+    { "id": "character-020", "name": "米娜．歇爾",
+      "tags": ["1999期生", "S班"],
+      "summary": "擅長治癒與輔助。",
+      "content": "喜歡甜點與美麗可愛的東西(例如服飾)。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-009"]
+    },
+    { "id": "character-021", "name": "迪卡．諾魯恩",
+      "tags": ["1998期生", "S班"],
+      "summary": "已畢業的S班成員。",
+      "content": "天賦【腐朽之城】，可以將周圍一切逐步腐朽。與西斯特的天賦，能配合出很強殺招。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-010"],
+      "links": [
+        {"type": "characters", "id": "character-022", "label": "西斯特"}
+      ]
+
+    },
+    { "id": "character-022", "name": "西斯特．洛斯",
+      "tags": ["1998期生", "S班"],
+      "summary": "已畢業的S班成員。",
+      "content": "具有空間天賦，能與迪卡能達成相當強的天賦組合技。",
+      "initialStatus": "locked",
+      "unlockAfter": ["holy-land-010"],
+      "links": [
+        {"type": "characters", "id": "character-021", "label": "迪卡"}
+      ]
     }
   ]
 }

@@ -4,71 +4,16 @@
   "title": "聖地篇",
   "description": "聖地篇的章節索引。",
   "chapters": [
-    {
-      "id": "holy-land-001",
-      "number": "001",
-      "title": "天賦",
-      "file": "001.md"
-    },
-    {
-      "id": "holy-land-002",
-      "number": "002",
-      "title": "亞特家",
-      "file": "002.md"
-    },
-    {
-      "id": "holy-land-003",
-      "number": "003",
-      "title": "繼承者",
-      "file": "003.md"
-    },
-    {
-      "id": "holy-land-004",
-      "number": "004",
-      "title": "艾迪",
-      "file": "004.md"
-    },
-    {
-      "id": "holy-land-005",
-      "number": "005",
-      "title": "莉亞",
-      "file": "005.md"
-    },
-    {
-      "id": "holy-land-006",
-      "number": "006",
-      "title": "聖地",
-      "file": "006.md"
-    },
-    {
-      "id": "holy-land-007",
-      "number": "007",
-      "title": "第一日測驗(1)",
-      "file": "007.md"
-    },
-    {
-      "id": "holy-land-008",
-      "number": "008",
-      "title": "第一日測驗(2)",
-      "file": "008.md"
-    },
-    {
-      "id": "holy-land-009",
-      "number": "009",
-      "title": "S班成員",
-      "file": "009.md"
-    },
-    {
-      "id": "holy-land-010",
-      "number": "010",
-      "title": "觸發",
-      "file": "010.md"
-    },
-    {
-      "id": "holy-land-011",
-      "number": "011",
-      "title": "第十一章（未命名）",
-      "file": "011.md"
-    }
+    {"id": "holy-land-001", "number": "001", "file": "001.md", "title": "1、天賦", "summary": "亞特家三名孩子覺醒天賦。"},
+    {"id": "holy-land-002", "number": "002", "file": "002.md", "title": "2、亞特家", "summary": "亞特家的簡單介紹"},
+    {"id": "holy-land-003", "number": "003", "file": "003.md", "title": "3、繼承者", "summary": "亞特家下任繼承者與家族底蘊"},
+    {"id": "holy-land-004", "number": "004", "file": "004.md", "title": "4、艾迪", "summary": "聚焦在艾迪與其他人的互動"},
+    {"id": "holy-land-005", "number": "005", "file": "005.md", "title": "5、莉亞", "summary": "聚焦在莉亞與其他人的互動"},
+    {"id": "holy-land-006", "number": "006", "file": "006.md", "title": "6、聖地", "summary": "前往聖地的第一日"},
+    {"id": "holy-land-007", "number": "007", "file": "007.md", "title": "7、第一日測驗(1)", "summary": "第一天測驗，莉亞於虛擬世界的戰鬥"},
+    {"id": "holy-land-008", "number": "008", "file": "008.md", "title": "8、第一日測驗(2)", "summary": "測驗結束，更多聖地的資訊"},
+    {"id": "holy-land-009", "number": "009", "file": "009.md", "title": "9、S班成員", "summary": "S班的所有成員"},
+    {"id": "holy-land-010", "number": "010", "file": "010.md", "title": "10、觸發", "summary": "有關觸發的資訊"},
+    {"id": "holy-land-011", "number": "011", "file": "011.md", "title": "11、夢世界", "summary": "虛擬世界區的介紹"}
   ]
 }

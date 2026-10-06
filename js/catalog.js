@@ -5,10 +5,10 @@ import {
     readSavedState,
     resolvePath,
     writeBookmarks
-} from "./data-store.js?v=20261002-27";
-import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-27";
-import { flushReaderProgress, openStoryChapter } from "./reader.js?v=20261002-27";
-import { preload } from "./lazy-loader.js?v=20261002-27";
+} from "./data-store.js?v=20261002-29";
+import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-29";
+import { flushReaderProgress, openStoryChapter } from "./reader.js?v=20261002-29";
+import { preload } from "./lazy-loader.js?v=20261002-29";
 
 const LIBRARY_TYPES = ["characters", "world", "maps"];
 const LAST_NOVEL_KEY = "novel-reader-last-novel";
@@ -488,13 +488,6 @@ function isSameBookmark(first, second) {
         && first.chapterId === second.chapterId;
 }
 
-function isEntryUnlocked(item) {
-    const initialStatus = item.initialStatus || "open";
-    if (initialStatus === "open" || initialStatus === "unlocked") return true;
-    const unlockAfter = Array.isArray(item.unlockAfter) ? item.unlockAfter : [];
-    return unlockAfter.some(id => appState.savedState.completedChapterIds.includes(String(id)));
-}
-
 async function showEntryDetail(item, type) {
     const detail = document.getElementById("library-detail");
     closeEntryDetail();
@@ -514,24 +507,11 @@ async function showEntryDetail(item, type) {
     }
 
     try {
-        const unlocked = isEntryUnlocked(item);
+        const entryUnlock = await resolveEntryUnlock(item);
+        const unlocked = entryUnlock.unlocked;
         const tags = Array.isArray(item.tags) ? item.tags : [];
         const links = Array.isArray(item.links) ? item.links : [];
         const hasSections = Array.isArray(item.sections) && item.sections.length > 0;
-        const summary = String(item.summary || "").trim();
-        const detailText = stripSummaryPrefix(item.content || item.description || "", summary);
-        const sections = hasSections
-            ? item.sections
-            : Array.isArray(item.unlockAfter) && item.unlockAfter.length && detailText.trim()
-                ? [{
-                    id: `${item.id || "entry"}-details`,
-                    title: "詳細內容",
-                    content: detailText,
-                    initialStatus: item.initialStatus || "locked",
-                    unlockAfter: item.unlockAfter,
-                    unlockHint: item.unlockHint
-                }]
-                : [];
         const categoryTitle = document.getElementById("library-title").textContent;
         const categoryNames = {
             characters: "人物設定",
@@ -539,35 +519,31 @@ async function showEntryDetail(item, type) {
             maps: "地圖設定"
         };
         const novelConfigUrl = new URL(appState.currentNovelData.configPath, document.baseURI).href;
-        const portrait = type === "characters" && item.portrait
+        const portrait = unlocked && type === "characters" && item.portrait
             ? `<img class="library-portrait" src="${escapeHtml(resolvePath(novelConfigUrl, item.portrait))}" alt="${escapeHtml(item.name)}" tabindex="0" role="button" aria-label="放大${escapeHtml(item.name)}圖片">`
-            : type === "characters"
+            : unlocked && type === "characters"
                 ? `<div class="library-portrait" aria-label="預設頭像">？</div>`
                 : "";
-        const mapImage = item.image
+        const mapImage = unlocked && item.image
             ? `<img class="library-map-image" src="${escapeHtml(resolvePath(novelConfigUrl, item.image))}" alt="${escapeHtml(item.name)}" tabindex="0" role="button" aria-label="放大${escapeHtml(item.name)}圖片">`
             : "";
-        const sectionContent = sections.length
-            ? await renderUnlockSections(sections, item)
+        const sectionContent = hasSections
+            ? await renderUnlockSections(item.sections, unlocked)
             : "";
         if (renderId !== detailRenderId) return;
-        const regularContent = hasSections
-            ? item.content
-                ? unlocked
-                    ? detailText
-                        ? `<div class="library-detail-content">${formatText(detailText)}</div>`
-                        : ""
-                    : `<p class="locked-note">🔒 詳細資料尚未解鎖。${item.unlockHint ? ` ${escapeHtml(item.unlockHint)}` : ""}</p>`
-                : ""
-            : sections.length
-                ? ""
-            : unlocked
-                ? detailText
-                    ? `<div class="library-detail-content">${formatText(detailText)}</div>`
-                    : item.content || item.description
-                        ? ""
-                        : `<div class="library-detail-content">尚未填寫詳細內容。</div>`
-                : `<p class="locked-note">🔒 詳細資料尚未解鎖。${item.unlockHint ? ` ${escapeHtml(item.unlockHint)}` : ""}</p>`;
+        const unlockStatus = renderUnlockStatus(
+            entryUnlock,
+            item.unlockHint,
+            "entry"
+        );
+        const detailText = item.content || item.description || "";
+        const regularContent = detailText
+            ? unlocked
+                ? `<div class="library-detail-content">${formatText(detailText)}</div>`
+                : `<p class="locked-note">🔒 詳細資料尚未解鎖。</p>`
+            : !hasSections
+                ? `<div class="library-detail-content">尚未填寫詳細內容。</div>`
+                : "";
 
         detail.innerHTML = `
             <div class="library-entry-header">
@@ -577,10 +553,11 @@ async function showEntryDetail(item, type) {
                 </div>
                 ${portrait}
             </div>
+            ${unlockStatus}
             ${regularContent}
             ${sectionContent}
             ${mapImage}
-            ${links.length ? `<div class="library-links"><strong>相關資料：</strong>${links.map(link => `
+            ${unlocked && links.length ? `<div class="library-links"><strong>相關資料：</strong>${links.map(link => `
                 <button type="button" data-link-type="${escapeHtml(link.type)}" data-link-id="${escapeHtml(link.id)}">
                     ${escapeHtml(link.label || link.id)}
                 </button>`).join("")}</div>` : ""}
@@ -616,57 +593,82 @@ async function showEntryDetail(item, type) {
     }
 }
 
-function stripSummaryPrefix(content, summary) {
-    const source = String(content || "");
-    const normalizedSummary = String(summary || "").replace(/\s+/g, "");
-    if (!normalizedSummary) return source;
-
-    let matchedCharacters = 0;
-    let sourceEnd = 0;
-    while (sourceEnd < source.length && matchedCharacters < normalizedSummary.length) {
-        if (!/\s/.test(source[sourceEnd])) {
-            if (source[sourceEnd] !== normalizedSummary[matchedCharacters]) return source;
-            matchedCharacters += 1;
-        }
-        sourceEnd += 1;
-    }
-    if (matchedCharacters !== normalizedSummary.length) return source;
-    return source.slice(sourceEnd).replace(/^\s+/, "");
+async function resolveEntryUnlock(item) {
+    const initialStatus = item.initialStatus || "open";
+    const targets = await Promise.all(
+        (Array.isArray(item.unlockAfter) ? item.unlockAfter : []).map(resolveUnlockTarget)
+    );
+    const explicitlyPublic = initialStatus === "open" || initialStatus === "unlocked";
+    const hasCompletedTarget = targets.some(target =>
+        appState.savedState.completedChapterIds.includes(String(target.chapter.id))
+    );
+    return {
+        initialStatus,
+        targets,
+        explicitlyPublic,
+        unlocked: explicitlyPublic || hasCompletedTarget
+    };
 }
 
-async function renderUnlockSections(sections, item) {
+function renderUnlockStatus(state, hint, key, parentUnlocked = true) {
+    if (state.initialStatus !== "locked" && !state.targets.length && !hint) return "";
+    const status = !parentUnlocked
+        ? "尚未解鎖"
+        : state.explicitlyPublic
+            ? "目前公開"
+            : state.unlocked
+                ? "已解鎖"
+                : "尚未解鎖";
+    const description = !parentUnlocked
+        ? `${status}：整筆資料尚未解鎖。`
+        : state.explicitlyPublic
+            ? `${status}，無需完成解鎖章節。`
+            : state.targets.length
+                ? `${status}：完成以下任一章節`
+                : `${status}，尚未設定解鎖章節。`;
+    const requirements = parentUnlocked && !state.explicitlyPublic && state.targets.length
+        ? `<ul class="library-unlock-requirements">${state.targets.map(target => {
+            const completed = appState.savedState.completedChapterIds.includes(String(target.chapter.id));
+            const chapterNumber = target.chapter.number ? `第${target.chapter.number}章 ` : "";
+            const label = `${target.arc.title || target.arc.name || "未命名篇章"}／${chapterNumber}${target.chapter.title || target.chapter.id}`;
+            return `<li>
+                <button type="button" data-unlock-arc="${escapeHtml(target.arc.id)}" data-unlock-chapter="${escapeHtml(target.chapter.id)}">${escapeHtml(label)}</button>
+                <span>${completed ? "已完成" : "尚未完成"}</span>
+            </li>`;
+        }).join("")}</ul>`
+        : "";
+    const hintMarkup = hint
+        ? `<p class="library-unlock-hint">提示：${escapeHtml(hint)}</p>`
+        : "";
+    return `<div class="library-unlock-status library-unlock-status-${key}">
+        <p class="library-unlock-label">${description}</p>
+        ${requirements}
+        ${hintMarkup}
+    </div>`;
+}
+
+async function renderUnlockSections(sections, entryUnlocked) {
     const results = await Promise.all(sections.map(async section => {
-        const rule = Array.isArray(section.unlockAfter)
-            ? section.unlockAfter
-            : Array.isArray(item.unlockAfter)
-                ? item.unlockAfter
-                : [];
+        const rule = Array.isArray(section.unlockAfter) ? section.unlockAfter : [];
         const targets = await Promise.all(rule.map(resolveUnlockTarget));
-        const initialStatus = section.initialStatus || (rule.length ? "locked" : item.initialStatus || "open");
-        const unlocked = initialStatus === "open"
-            || initialStatus === "unlocked"
-            || targets.some(target => appState.savedState.completedChapterIds.includes(String(target.chapter.id)));
-        const isPublic = initialStatus === "open" || initialStatus === "unlocked";
-        const requirement = targets.length && !isPublic
-            ? `<p class="library-unlock-label">${unlocked ? "已解鎖" : "尚未解鎖"}：完成以下任一章節</p>
-                <ul class="library-unlock-requirements">${targets.map(target => {
-                    const completed = appState.savedState.completedChapterIds.includes(String(target.chapter.id));
-                    const chapterNumber = target.chapter.number ? `第${target.chapter.number}章 ` : "";
-                    const label = `${target.arc.title || target.arc.name || "未命名篇章"}／${chapterNumber}${target.chapter.title || target.chapter.id}`;
-                    return `<li>
-                        <button type="button" data-unlock-arc="${escapeHtml(target.arc.id)}" data-unlock-chapter="${escapeHtml(target.chapter.id)}">${escapeHtml(label)}</button>
-                        <span>${completed ? "已完成" : "尚未完成"}</span>
-                    </li>`;
-                }).join("")}</ul>`
-            : `<p class="library-unlock-label">${isPublic ? "目前公開，無需完成解鎖章節。" : "尚未解鎖。"}</p>`;
-        const sectionText = stripSummaryPrefix(section.content || "", item.summary || "");
+        const initialStatus = section.initialStatus || (rule.length ? "locked" : "open");
+        const explicitlyPublic = initialStatus === "open" || initialStatus === "unlocked";
+        const sectionUnlock = {
+            initialStatus,
+            targets,
+            explicitlyPublic,
+            unlocked: explicitlyPublic
+                || targets.some(target => appState.savedState.completedChapterIds.includes(String(target.chapter.id)))
+        };
+        const unlocked = entryUnlocked && sectionUnlock.unlocked;
+        const requirement = entryUnlocked
+            ? renderUnlockStatus(sectionUnlock, section.unlockHint || "", "section")
+            : `<div class="library-unlock-status library-unlock-status-section"><p class="library-unlock-label">🔒 此分段隨整筆資料一併鎖定。</p>${section.unlockHint ? `<p class="library-unlock-hint">提示：${escapeHtml(section.unlockHint)}</p>` : ""}</div>`;
         const content = unlocked
-            ? sectionText
-                ? `<div class="library-detail-content">${formatText(sectionText)}</div>`
-                : section.content
-                    ? ""
-                    : `<div class="library-detail-content">尚未填寫詳細內容。</div>`
-            : `<p class="locked-note">🔒${section.unlockHint ? ` ${escapeHtml(section.unlockHint)}` : " 完成指定章節後解鎖。"}</p>`;
+            ? section.content
+                ? `<div class="library-detail-content">${formatText(section.content)}</div>`
+                : `<div class="library-detail-content">尚未填寫詳細內容。</div>`
+            : `<p class="locked-note">🔒 此分段尚未解鎖。</p>`;
 
         return `<section class="library-detail-section">
             <h3>${escapeHtml(section.title || section.name || "設定分段")}</h3>

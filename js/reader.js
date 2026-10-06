@@ -1,12 +1,12 @@
 import { appState } from "./app-state.js";
-import { fetchText, preload } from "./lazy-loader.js?v=20261002-27";
+import { fetchText, preload } from "./lazy-loader.js?v=20261002-29";
 import {
     readBookmarks,
     resolvePath,
     writeBookmarks,
     writeSavedState
-} from "./data-store.js?v=20261002-27";
-import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-27";
+} from "./data-store.js?v=20261002-29";
+import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-29";
 
 let navigationHandlers = {};
 let onProgressSaved = () => {};

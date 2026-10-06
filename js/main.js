@@ -13,15 +13,15 @@ import {
     selectNovel,
     toggleSideMenu,
     updateResumeButton
-} from "./catalog.js?v=20261002-27";
+} from "./catalog.js?v=20261002-29";
 import {
     completeOrNextChapter,
     configureReader,
     previousChapter
-} from "./reader.js?v=20261002-27";
-import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-27";
+} from "./reader.js?v=20261002-29";
+import { setBreadcrumbs, switchScreen } from "./navigation.js?v=20261002-29";
 import { initializeReadingPresentation } from "./reading-presentation.js";
-import { initializeSettings, openSettings } from "./settings.js?v=20261002-27";
+import { initializeSettings, openSettings } from "./settings.js?v=20261002-29";
 
 function reportError(error) {
     console.error(error);

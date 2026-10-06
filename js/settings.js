@@ -1,7 +1,7 @@
 import { appState } from "./app-state.js";
 import { setReaderDisplaySize } from "./reading-presentation.js";
-import { switchScreen } from "./navigation.js?v=20261002-27";
-import { flushReaderProgress } from "./reader.js?v=20261002-27";
+import { switchScreen } from "./navigation.js?v=20261002-29";
+import { flushReaderProgress } from "./reader.js?v=20261002-29";
 
 const SETTINGS_KEY = "novel-reader-presentation-v1";
 const SIZE_KEY = "novel-interface-size-v2";

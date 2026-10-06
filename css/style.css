@@ -558,6 +558,7 @@ body.reader-mode #display-size-controls {
 
 .menu-buttons.novel-menu button,
 .novel-menu button {
+    appearance: none;
     min-height: 72px;
     padding: 10px 12px;
     border: 1px solid rgba(255, 215, 0, 0.55);
@@ -1170,7 +1171,7 @@ body.hide-route-breadcrumbs #breadcrumb-items {
     background: linear-gradient(145deg, rgba(34, 32, 27, 0.94), rgba(11, 11, 11, 0.92));
     box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 8px 20px rgba(0, 0, 0, 0.2);
     font-size: var(--library-detail-font-size);
-    line-height: 1.6;
+    line-height: 1.45;
     overflow-wrap: anywhere;
 }
 
@@ -1179,7 +1180,7 @@ body.hide-route-breadcrumbs #breadcrumb-items {
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.55em;
 }
 
 .library-entry-heading {
@@ -1214,49 +1215,72 @@ body.hide-route-breadcrumbs #breadcrumb-items {
 }
 
 .library-detail-content {
-    line-height: 1.7;
+    line-height: 1.5;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
 
 .library-detail-section {
-    margin-top: 1.25em;
-    padding-top: 0.9em;
+    margin-top: 0.75em;
+    padding-top: 0.55em;
     border-top: 1px solid rgba(255, 215, 0, 0.28);
 }
 
 .library-detail-section h3 {
-    margin: 0 0 0.5em;
+    margin: 0 0 0.3em;
     color: #ffd700;
 }
 
 .library-unlock-label {
-    margin: 0.5em 0;
+    margin: 0.2em 0;
     color: #d6c47b;
 }
 
+.library-unlock-status {
+    margin: 0.35em 0 0.65em;
+}
+
+.library-unlock-hint {
+    margin: 0.25em 0 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: var(--utility-font-size);
+}
+
 .library-unlock-requirements {
-    display: grid;
-    gap: 0.4em;
-    margin: 0.5em 0 0.9em;
-    padding-left: 1.4em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15em 0.8em;
+    margin: 0.15em 0 0.35em;
+    padding: 0;
+    list-style: none;
 }
 
 .library-unlock-requirements li {
-    padding-left: 0.15em;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0 0.35em;
+    min-width: 0;
 }
 
 .library-unlock-requirements button {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
     color: #ffd700;
     text-align: left;
     text-decoration: underline;
     text-underline-offset: 0.15em;
+    line-height: 1.35;
 }
 
 .library-unlock-requirements span {
-    margin-left: 0.5em;
+    margin-left: 0;
     color: rgba(255, 255, 255, 0.72);
     font-size: var(--utility-font-size);
+    white-space: nowrap;
 }
 
 .library-links {
@@ -1737,7 +1761,7 @@ body.reader-mode .breadcrumb-item {
 
 body.reader-mode #menu-toggle-bar {
     position: fixed;
-    z-index: 400;
+    z-index: 200;
     pointer-events: auto;
 }
 

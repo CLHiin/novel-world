@@ -1,4 +1,4 @@
-import { fetchText } from "./lazy-loader.js?v=20261002-27";
+import { fetchText } from "./lazy-loader.js?v=20261002-29";
 import { createEmptyState } from "./app-state.js";
 
 const SAVE_KEY_PREFIX = "novel-reader-v1:";
